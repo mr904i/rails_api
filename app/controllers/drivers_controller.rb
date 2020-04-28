@@ -15,8 +15,9 @@ class DriversController < ApplicationController
 
   # POST /drivers
   def create
-    @driver = Driver.new(driver_params)
+    @driver = Driver.new(driver_post_permitted_params)
 
+    # response
     if @driver.save
       render json: @driver, status: :created, location: @driver
     else
@@ -47,5 +48,9 @@ class DriversController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def driver_params
       params.fetch(:driver, {})
+    end
+    #post parameter
+    def driver_post_permitted_params
+      params.require(:driver).permit(:name, :car_number, :tel)
     end
 end
