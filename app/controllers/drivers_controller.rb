@@ -36,7 +36,6 @@ class DriversController < ApplicationController
 
   # DELETE /drivers/1
   def destroy
-    binding.pry
     @driver.destroy
   end
 
