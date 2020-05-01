@@ -1,8 +1,11 @@
 class ApplicationController < ActionController::API
-    before_action :authorized
+  before_action :authorized
 
-  def encode_token(payload)
-    JWT.encode(payload, 's3cr3t')
+  def encode_token(user_id)
+    #token keeps 5 minutes
+    expires_in = 5.minute.from_now.to_i
+    payload = {user_id: user_id, exp: expires_in}
+    JWT.encode(payload, 's3cr3t', 'HS256')
   end
 
   def auth_header
@@ -24,7 +27,7 @@ class ApplicationController < ActionController::API
 
   def logged_in_user
     if decoded_token
-      user_id = decoded_token[0]['user_id']
+      user_id = decoded_token[0]['user_id']['user_id']
       @user = User.find_by(id: user_id)
     end
   end
