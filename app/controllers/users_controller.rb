@@ -16,7 +16,6 @@ class UsersController < ApplicationController
 
     # LOGGING IN
     def login
-        binding.pry
         @user = User.find_by(username: params[:username])
 
         if @user && @user.authenticate(params[:password])
