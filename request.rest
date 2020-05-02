@@ -1,0 +1,43 @@
+POST http://localhost:3000/create/
+Content-Type: application/json
+
+{
+    "username": "keita",
+    "password": "keita",
+    "age": "23"
+}
+
+###
+POST http://localhost:3000/login/
+Content-Type: application/json
+
+{
+    "username": "keita",
+    "password": "keita"
+}
+
+###
+GET http://localhost:3000/drivers/
+
+###
+POST http://localhost:3000/drivers/
+Content-Type: application/json
+
+{
+    "name": "田口良平",
+    "car_number": "0000",
+    "tel": "08011112223"
+}
+
+###
+PATCH http://localhost:3000/drivers/7
+Content-Type: application/json
+
+{
+    "name": "東京都市大学",
+    "car_number": "1243",
+    "tel": "03123455848"
+}
+
+###
+DELETE http://localhost:3000/drivers/7/
