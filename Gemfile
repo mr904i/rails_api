@@ -47,3 +47,4 @@ gem 'pg'
 # user_authentication
 gem 'rack-cors'
 gem 'jwt'
+gem 'dotenv-rails'
