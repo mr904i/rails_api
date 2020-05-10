@@ -39,4 +39,10 @@ class ApplicationController < ActionController::API
   def authorized
     render json: { message: 'Please log in' }, status: :unauthorized unless logged_in?
   end
+
+  #postする時のuser idをtokenから取得する
+  def user_authentication
+    @user_id = decoded_token[0]['user_id']['user_id']
+  end
+  
 end
